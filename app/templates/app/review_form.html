@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .review-form {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .review-form h1 {
+            margin-bottom: 20px;
+        }
+        .review-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .review-form input, .review-form textarea, .review-form select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .review-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+        }
+        .review-form button:hover {
+            background-color: #218838;
+        }
+        .log-out {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .log-out button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #dc3545;
+            color: white;
+        }
+        .log-out button:hover {
+            background-color: #c82333;
+        }
+        .back {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+        }
+    </style>
+</head>
+<body>
+    <div class="review-form">
+        <h1>Add Review</h1>
+        <form action="" method="post"> 
+            {% csrf_token %}
+
+            <label for="review">Review :</label>
+            <textarea id="review" name="review" rows="6" maxlength="500" required></textarea>
+
+            <label for="rating">Score :</label>
+            <select id="rating" name="rating" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <!-- {{form}} -->
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="back">
+        <a href="{% url 'app:index' %}">Go back to the books list</a>
+    </div>
+    
+    <div class="log-out">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+        </form>
+    </div>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .register-form {
+            max-width: 400px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .register-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .register-form table {
+            width: 100%;
+        }
+        .register-form table tr {
+            margin-bottom: 10px;
+        }
+        .register-form table td {
+            padding: 10px;
+        }
+        .register-form input[type="text"],
+        .register-form input[type="password"],
+        .register-form input[type="submit"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .register-form input[type="submit"] {
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        .register-form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-form">
+        <h2>Register</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Register">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+</body>
+</html>
