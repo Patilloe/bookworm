@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from app import views
+from bookworm.views import home
 
 urlpatterns = [
+    path("", home, name="home"),
     path('app/', include("app.urls")),
     path('admin/', admin.site.urls),
     path('accounts/', include("django.contrib.auth.urls")),

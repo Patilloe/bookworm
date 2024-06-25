@@ -1,87 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .books-list {
-            max-width: 600px;
-            margin: auto;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
-        .books-list ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .books-list ul li {
-            margin-bottom: 10px;
-        }
-        .books-list ul li a {
-            text-decoration: none;
-            color: #007bff;
-        }
-        .books-list ul li a:hover {
-            text-decoration: underline;
-        }
-        .books-list p {
-            margin-top: 10px;
-        }
-        .add-book {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .add-book a {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #28a745;
-            color: white;
-            text-decoration: none;
-        }
-        .add-book a:hover {
-            background-color: #218838;
-        }
-        .log-out {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .log-out button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #dc3545;
-            color: white;
-        }
-        .log-out button:hover {
-            background-color: #c82333;
-        }
-    </style>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block style %}
+{{ block.super }}
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .books-list {
+        max-width: 600px;
+        margin: auto;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    .books-list ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .books-list ul li {
+        margin-bottom: 10px;
+    }
+    .books-list ul li a {
+        text-decoration: none;
+        color: #007bff;
+    }
+    .books-list ul li a:hover {
+        text-decoration: underline;
+    }
+    .books-list p {
+        margin-top: 10px;
+    }
+    .add-book {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .add-book a {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+    }
+    .add-book a:hover {
+        background-color: #218838;
+    }
+{% endblock %}
+{% block body %}
     <div class="books-list">
         {% if book_list %}
             <ul>
-                {% for book, score in book_list %}
+                {% for book in book_list %}
                     <li>
                         <a href="{% url 'app:book' book.id %}">{{ book.title }}</a>
-                        {% if score == -1 %}
+                        {% if book.score is None %}
                             <p>Score: No Reviews Yet!</p>
                         {% else %}
-                            <p>Score: {{ score }}</p>
+                            <p>Score: {{ book.score|floatformat:2 }}</p>
                         {% endif %}
                     </li>
                 {% endfor %}
@@ -94,12 +73,6 @@
     <div class="add-book">
         <a href="{% url 'app:add_book' %}">Add Book</a>
     </div>
+    {% include "includes/log_out.html" %}
+{% endblock %}
 
-    <div class="log-out">
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Log Out</button>
-        </form>
-    </div>
-</body>
-</html>

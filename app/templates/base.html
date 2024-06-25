@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Bookworm app{% endblock %}</title>
+</head>
+<style>
+    {% block style %}
+    .log-out {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .log-out button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #dc3545;
+        color: white;
+    }
+    .log-out button:hover {
+        background-color: #c82333;
+    }
+    {% endblock %}
+</style>
+{% block body %}
+<body>
+</body>
+{% endblock %}
+</html>
