@@ -1,95 +1,77 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .book-details {
-            max-width: 600px;
-            margin: auto;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .book-details h1 {
-            margin-bottom: 10px;
-        }
-        .book-details p {
-            margin: 5px 0;
-        }
-        .book-details .summary {
-            margin-top: 15px;
-        }
-        .reviews {
-            margin-top: 20px;
-            max-width: 600px;
-            margin: auto;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
-        }
-        .review {           
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-            margin-top: 10px;
-        }
-        .review:first-of-its-kind {
-            border-top: none;
-            padding-top: 0;
-            margin-top: 0;
-        }
-        .review h3 {
-            margin: 5px 0;
-        }
-        .review p {
-            margin: 5px 0;
-        }
-        .add-review button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #28a745;
-            color: white;
-        }
-        .add-review button:hover {
-            background-color: #218838;
-        }
-        .back {
-            max-width: 600px;
-            margin: auto;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
-        }
-        .log-out {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .log-out button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #dc3545;
-            color: white;
-        }
-        .log-out button:hover {
-            background-color: #c82333;
-        }
-    </style>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+    Book details
+{% endblock %}
+{% block style %}
+{{ block.super }}
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .book-details {
+        max-width: 600px;
+        margin: auto;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .book-details h1 {
+        margin-bottom: 10px;
+    }
+    .book-details p {
+        margin: 5px 0;
+    }
+    .book-details .summary {
+        margin-top: 15px;
+    }
+    .reviews {
+        margin-top: 20px;
+        max-width: 600px;
+        margin: auto;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+    }
+    .review {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    .review:first-of-its-kind {
+        border-top: none;
+        padding-top: 0;
+        margin-top: 0;
+    }
+    .review h3 {
+        margin: 5px 0;
+    }
+    .review p {
+        margin: 5px 0;
+    }
+    .add-review button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #28a745;
+        color: white;
+    }
+    .add-review button:hover {
+        background-color: #218838;
+    }
+    .back {
+        max-width: 600px;
+        margin: auto;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+    }
+{% endblock %}
+{% block body %}
     <div class="book-details">
         <h1>{{book.title}}</h1>
         <p><strong>Author :</strong> {{book.author}} </p>
@@ -123,5 +105,4 @@
             <button type="submit">Log Out</button>
         </form>
     </div>
-</body>
-</html>
+{% endblock %}

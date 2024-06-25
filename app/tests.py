@@ -1,4 +1,4 @@
-from django.test import RequestFactory, TestCase
+from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user
 from .models import Book, Review
@@ -40,11 +40,6 @@ class BookIndexViewTests(TestCase):
         book2 = createBook("Second Book", "", "", 2024)
         book3 = createBook("Last Book", "", "", 2024)
 
-        review1 = createReview("Review First Book", 2, book1)
-        review2 = createReview("Review Second Book", 5, book2)
-        review3 = createReview("Review Last Book", 3, book3)
-
-    
         user = User.objects.create_user("John Doe")
         self.client.force_login(user=user)
         response = self.client.get(reverse("app:index"))

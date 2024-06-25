@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Book</title>
-    <style>
+{% extends 'base.html' %}
+{% block title %}
+    Add book
+{% endblock %}
+{% block style %}
+{{ block.super }}
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -44,22 +43,7 @@
         .book-form button:hover {
             background-color: #218838;
         }
-        .log-out {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .log-out button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #dc3545;
-            color: white;
-        }
-        .log-out button:hover {
-            background-color: #c82333;
-        }
+
         .back {
             max-width: 600px;
             margin: auto;
@@ -68,9 +52,8 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
         }
-    </style>
-</head>
-<body>
+{% endblock %}
+{% block body %}
     <div class="book-form">
         <h1>Add book</h1>
         <form action="" method="post"> 
@@ -102,6 +85,4 @@
             <button type="submit">Log Out</button>
         </form>
     </div>
-
-</body>
-</html>
+{% endblock %}
